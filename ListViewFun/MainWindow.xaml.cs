@@ -1,28 +1,47 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using ListViewFun.Scenarios;
 
 namespace ListViewFun
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Main window, just used to launch the different test cases
     /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
+            Loaded += HandleLoaded;
         }
+
+        private async void HandleLoaded( object sender, RoutedEventArgs e )
+        {
+            mViewModel = new ViewModel();
+            mStatus.Text = "Initializing data...";
+            mHardCodedSizesButton.IsEnabled = false;
+            await Task.Run( () => mViewModel.Initialize( 1000000 ) ); // might as well create a whole bunch
+            mHardCodedSizesButton.IsEnabled = true;
+            mStatus.Text = "Ready to go.";
+        }
+
+        private void HandleHardCodeSizes( object sender, RoutedEventArgs e )
+        {
+            ShowModalWindow( new HardCodedSizesWindow() );
+        }
+
+        /// <summary>
+        /// Hooks up viewmodel and displays modal window
+        /// </summary>
+        /// <param name="aWindow"></param>
+        private void ShowModalWindow( Window aWindow )
+        {
+            aWindow.Owner = this;
+            aWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            aWindow.DataContext = mViewModel;
+            aWindow.ShowDialog();
+        }
+
+        private ViewModel mViewModel;
     }
 }
