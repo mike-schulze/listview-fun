@@ -56,10 +56,17 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Animal.cs" />
-    <Compile Include="Scenarios\HardCodedSizesWindow.xaml.cs">
+    <Compile Include="HardCodedSizes\HardCodedSizesWindow.xaml.cs">
       <DependentUpon>HardCodedSizesWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel.cs" />
+    <Compile Include="VirtualizingWrapPanel\VirtualizingWrapPanel.cs" />
+    <Compile Include="VirtualizingWrapPanel\VirtualizingWrapPanelWindow.xaml.cs">
+      <DependentUpon>VirtualizingWrapPanelWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VirtualizingWrapPanel\WrapPanelWindow.xaml.cs">
+      <DependentUpon>WrapPanelWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -72,7 +79,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Scenarios\HardCodedSizesWindow.xaml">
+    <Page Include="HardCodedSizes\HardCodedSizesWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VirtualizingWrapPanel\VirtualizingWrapPanelWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VirtualizingWrapPanel\WrapPanelWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

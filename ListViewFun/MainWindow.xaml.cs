@@ -1,11 +1,13 @@
 ﻿using System.Threading.Tasks;
 using System.Windows;
-using ListViewFun.Scenarios;
+using ListViewFun.HardCodedSizes;
+using ListViewFun.VirtualizingWrapPanel;
 
 namespace ListViewFun
 {
     /// <summary>
-    /// Main window, just used to launch the different test cases
+    /// Main window, just used to launch the different test cases.
+    /// Not very elegant, but hopefully short and understandable code.
     /// </summary>
     public partial class MainWindow : Window
     {
@@ -15,19 +17,48 @@ namespace ListViewFun
             Loaded += HandleLoaded;
         }
 
+        /// <summary>
+        /// Initializes ViewModel, clumsily disables/enables buttons and provides status.
+        /// </summary>
         private async void HandleLoaded( object sender, RoutedEventArgs e )
         {
             mViewModel = new ViewModel();
+            
+            ButtonsIsEnabled( false );
             mStatus.Text = "Initializing data...";
-            mHardCodedSizesButton.IsEnabled = false;
-            await Task.Run( () => mViewModel.Initialize( 1000000 ) ); // might as well create a whole bunch
-            mHardCodedSizesButton.IsEnabled = true;
+            await Task.Run( () => mViewModel.Initialize() );
+            
+            ButtonsIsEnabled( true );
             mStatus.Text = "Ready to go.";
         }
 
-        private void HandleHardCodeSizes( object sender, RoutedEventArgs e )
+        /// <summary>
+        /// Helper function to avoid duplication when enabling/disabling buttons
+        /// </summary>
+        private void ButtonsIsEnabled( bool isEnabled )
         {
-            ShowModalWindow( new HardCodedSizesWindow() );
+            mHardCodedSizesButton.IsEnabled = isEnabled;
+            mWrapPanelButton.IsEnabled = isEnabled;
+            mVirtualizingWrapPanelButton.IsEnabled = isEnabled;
+        }
+
+        /// <summary>
+        /// Opens the appropriate child window for scenario after button click.
+        /// </summary>
+        private void HandleButtonClick( object sender, RoutedEventArgs e )
+        {
+            if( sender == mHardCodedSizesButton )
+            {
+                ShowModalWindow( new HardCodedSizesWindow() );
+            }
+            else if( sender == mVirtualizingWrapPanelButton )
+            {
+                ShowModalWindow( new VirtualizingWrapPanelWindow() );
+            }
+            else if( sender == mWrapPanelButton )
+            {
+                ShowModalWindow( new WrapPanelWindow() );
+            }
         }
 
         /// <summary>
@@ -38,6 +69,7 @@ namespace ListViewFun
         {
             aWindow.Owner = this;
             aWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            mViewModel.NumberOfItems = int.Parse( mNumberOfItems.Text );
             aWindow.DataContext = mViewModel;
             aWindow.ShowDialog();
         }

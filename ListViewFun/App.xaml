@@ -4,6 +4,24 @@
              xmlns:local="clr-namespace:ListViewFun"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <!--Data template to be used as ItemTemplate in our list-->
+        <DataTemplate x:Key="AnimalTemplate">
+            <Grid Width="150" Height="112" >
+                <Border Background="{Binding Path=Color}"
+                                VerticalAlignment="Center">
+                    <Grid>
+                        <Image VerticalAlignment="Center"
+                                       Source="{Binding Image}"
+                                       Opacity="0.5" />
+                        <TextBlock Text="{Binding Name}"
+                                           TextWrapping="Wrap"
+                                           Foreground="White"
+                                           FontSize="16"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center"/>
+                    </Grid>
+                </Border>
+            </Grid>
+        </DataTemplate>
     </Application.Resources>
 </Application>

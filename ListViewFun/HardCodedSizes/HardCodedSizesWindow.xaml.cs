@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace ListViewFun.Scenarios
+namespace ListViewFun.HardCodedSizes
 {
     /// <summary>
     /// Demonstrates that hard-coding the height of items displayed in a list-view has a huge performance impact
