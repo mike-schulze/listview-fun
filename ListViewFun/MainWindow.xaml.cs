@@ -1,7 +1,5 @@
 ﻿using System.Threading.Tasks;
 using System.Windows;
-using ListViewFun.HardCodedSizes;
-using ListViewFun.VirtualizingWrapPanel;
 
 namespace ListViewFun
 {
@@ -40,6 +38,7 @@ namespace ListViewFun
             mHardCodedSizesButton.IsEnabled = isEnabled;
             mWrapPanelButton.IsEnabled = isEnabled;
             mVirtualizingWrapPanelButton.IsEnabled = isEnabled;
+            mGridViewSortButton.IsEnabled = isEnabled;
         }
 
         /// <summary>
@@ -49,15 +48,19 @@ namespace ListViewFun
         {
             if( sender == mHardCodedSizesButton )
             {
-                ShowModalWindow( new HardCodedSizesWindow() );
+                ShowModalWindow( new HardCodedSizes.HardCodedSizesWindow() );
             }
             else if( sender == mVirtualizingWrapPanelButton )
             {
-                ShowModalWindow( new VirtualizingWrapPanelWindow() );
+                ShowModalWindow( new VirtualizingWrapPanel.VirtualizingWrapPanelWindow() );
             }
             else if( sender == mWrapPanelButton )
             {
-                ShowModalWindow( new WrapPanelWindow() );
+                ShowModalWindow( new VirtualizingWrapPanel.WrapPanelWindow() );
+            }
+            else if( sender == mGridViewSortButton )
+            {
+                ShowModalWindow( new GridViewSort.GridViewSortWindow() );
             }
         }
 

@@ -20,6 +20,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
             <Button Padding="5" Margin="10"
@@ -39,6 +40,13 @@
                     Content="Virtualizing Wrap Panel"
                     Click="HandleButtonClick"
                     x:Name="mVirtualizingWrapPanelButton" />
+
+            <Button Padding="5" Margin="10"
+                    Grid.Column="0" Grid.Row="2"
+                    Content="GridView Sort"
+                    Click="HandleButtonClick"
+                    x:Name="mGridViewSortButton"/>
+
         </Grid>
         
         <Grid Grid.Row="1" Margin="15,5">
@@ -50,7 +58,7 @@
             
             <TextBlock Grid.Column="0" x:Name="mStatus" VerticalAlignment="Center" />
             <TextBlock Grid.Column="1" Text="Number of Items:" Margin="10,0"  VerticalAlignment="Center" />
-            <TextBox Grid.Column="2" Width="75" Margin="10,0" x:Name="mNumberOfItems" Text="100" VerticalAlignment="Center" />
+            <TextBox Grid.Column="2" Width="75" Margin="10,0" x:Name="mNumberOfItems" Text="1000000" VerticalAlignment="Center" />
         </Grid>
         
     </Grid>

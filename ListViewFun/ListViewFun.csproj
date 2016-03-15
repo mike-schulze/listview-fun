@@ -56,6 +56,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Animal.cs" />
+    <Compile Include="GridViewSort\GridViewSort.cs" />
+    <Compile Include="GridViewSort\GridViewSortWindow.xaml.cs">
+      <DependentUpon>GridViewSortWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="HardCodedSizes\HardCodedSizesWindow.xaml.cs">
       <DependentUpon>HardCodedSizesWindow.xaml</DependentUpon>
     </Compile>
@@ -67,6 +71,10 @@
     <Compile Include="VirtualizingWrapPanel\WrapPanelWindow.xaml.cs">
       <DependentUpon>WrapPanelWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="GridViewSort\GridViewSortWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

@@ -7,9 +7,7 @@
         mc:Ignorable="d"
         Title="WrapPanel Scenario" Height="500" Width="800">
 
-    <ListView Grid.Column="0"
-              Grid.Row="1"
-              ItemsSource="{Binding Animals}"
+    <ListView ItemsSource="{Binding Animals}"
               ScrollViewer.HorizontalScrollBarVisibility="Disabled"
               ItemTemplate="{StaticResource AnimalTemplate}">
         <ListView.ItemsPanel>
